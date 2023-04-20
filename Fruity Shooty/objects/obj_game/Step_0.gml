@@ -21,4 +21,17 @@ if(room == rm_game){
 		audio_play_sound(snd_gameover, 2, false);
 	}
 }
-	
+
+var game_width = 650;
+var game_height = 650;
+
+var screen_width = display_get_width();
+var screen_height = display_get_height();
+if(screen_width <= 768){
+	var scale_factor = min(screen_width / game_width, screen_height / game_height)
+
+	var new_game_width = round(scale_factor * game_width);
+	var new_game_height = round(scale_factor * game_height);
+
+	window_set_size(new_game_width, new_game_height);
+}
